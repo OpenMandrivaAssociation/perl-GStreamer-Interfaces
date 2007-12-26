@@ -4,7 +4,7 @@
 Summary: Perl module for the gstreamer library
 Name:    perl-%module
 Version: 0.03
-Release: %mkrel 2
+Release: %mkrel 3
 License: GPL or Artistic
 Group:   Development/GNOME and GTK+
 Source:  %module-%version.tar.bz2
@@ -18,6 +18,7 @@ BuildRequires: perl-ExtUtils-Depends
 BuildRequires: perl-ExtUtils-PkgConfig
 BuildRequires: perl-devel
 BuildRequires: perl-GStreamer
+BuildRequires: libgstreamer-plugins-base0.10-devel
 
 %description
 This module allows you to use the GStreamer library from Perl.
