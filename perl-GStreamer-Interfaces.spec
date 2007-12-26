@@ -18,7 +18,7 @@ BuildRequires: perl-ExtUtils-Depends
 BuildRequires: perl-ExtUtils-PkgConfig
 BuildRequires: perl-devel
 BuildRequires: perl-GStreamer
-BuildRequires: libgstreamer-plugins-base0.10-devel
+BuildRequires: libgstreamer-plugins-base-devel
 
 %description
 This module allows you to use the GStreamer library from Perl.
