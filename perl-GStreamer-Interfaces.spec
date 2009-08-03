@@ -1,30 +1,32 @@
-%define module GStreamer-Interfaces
-%define	fmodule	GStreamer/Interfaces
+%define upstream_name    GStreamer-Interfaces
+%define upstream_version 0.04
 
-Summary: Perl module for the gstreamer library
-Name:    perl-%module
-Version: 0.04
-Release: %mkrel 2
-License: GPL or Artistic
-Group:   Development/GNOME and GTK+
-Source:  %module-%version.tar.bz2
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
+
+Summary:    Perl module for the gstreamer library
+License:    GPL+ or Artistic
+Group:      Development/GNOME and GTK+
+Url:        http://gtk2-perl.sf.net/
+Source0:    %{upstream_name}-%{upstream_version}.tar.bz2
 # http://sourceforge.net/project/showfiles.php?group_id=64773&package_id=150831
-URL: http://gtk2-perl.sf.net/
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: perl-Glib >= 1.100
-BuildRequires: perl-Gtk2 >= 1.100
+
 BuildRequires: libgstreamer-devel >= 0.10
+BuildRequires: libgstreamer-plugins-base-devel
+BuildRequires: perl-Glib >= 1.100
+BuildRequires: perl-GStreamer
+BuildRequires: perl-Gtk2 >= 1.100
 BuildRequires: perl-ExtUtils-Depends
 BuildRequires: perl-ExtUtils-PkgConfig
 BuildRequires: perl-devel
-BuildRequires: perl-GStreamer
-BuildRequires: libgstreamer-plugins-base-devel
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 This module allows you to use the GStreamer library from Perl.
 
 %prep
-%setup -q -n %module-%version
+%setup -q -n %{upstream_name}-%{upstream_version}
 find -type d -name CVS | rm -rf 
 perl Makefile.PL INSTALLDIRS=vendor
 
@@ -42,11 +44,8 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-
 %files
 %defattr(-, root, root)
 %{_mandir}/*/*
-%{perl_vendorarch}/GStreamer
-%{perl_vendorarch}/%fmodule
+%{perl_vendorarch}/GStreamer/*
 %{perl_vendorarch}/auto/*
-
